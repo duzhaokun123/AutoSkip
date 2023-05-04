@@ -354,10 +354,10 @@ class AutomatorConnection : IAutomatorConnection.Stub() {
     }
 
     private fun checkRegion(nodeRect: Rect, windowRect: Rect, result: Result): Boolean {
-        if (/*nodeRect.exactCenterX() > windowRect.width() / 4f &&*/ nodeRect.exactCenterX() < windowRect.width() / 3f * 2) {
-            result.maskReason(Result.REASON_ILLEGAL_LOCATION or Result.REASON_MASK_TRANSVERSE)
-            return false
-        }
+//        if (/*nodeRect.exactCenterX() > windowRect.width() / 4f &&*/ nodeRect.exactCenterX() < windowRect.width() / 3f * 2) {
+//            result.maskReason(Result.REASON_ILLEGAL_LOCATION or Result.REASON_MASK_TRANSVERSE)
+//            return false
+//        }
 //        if (nodeRect.exactCenterY() > windowRect.height() / 4f && nodeRect.exactCenterY() < windowRect.height() / 3f * 2) {
 //            result.maskReason(Result.REASON_ILLEGAL_LOCATION or Result.REASON_MASK_PORTRAIT)
 //            return false
@@ -366,29 +366,29 @@ class AutomatorConnection : IAutomatorConnection.Stub() {
     }
 
     private fun checkSize(nodeRect: Rect, windowRect: Rect, result: Result): Boolean {
-        val nw = nodeRect.width().coerceAtLeast(nodeRect.height())
-        val nh = nodeRect.width().coerceAtMost(nodeRect.height())
+//        val nw = nodeRect.width().coerceAtLeast(nodeRect.height())
+//        val nh = nodeRect.width().coerceAtMost(nodeRect.height())
         val isPortrait = windowRect.width() < windowRect.height()
         result.portrait = isPortrait
-        if (isPortrait) {
-            if (nw == 0 || nw >= windowRect.width() / 3) {
-                result.maskReason(Result.REASON_ILLEGAL_SIZE or Result.REASON_MASK_TRANSVERSE)
-                return false
-            }
-            if (nh == 0 || nh >= windowRect.height() / 8) {
-                result.maskReason(Result.REASON_ILLEGAL_SIZE or Result.REASON_MASK_PORTRAIT)
-                return false
-            }
-        } else {
-            if (nw == 0 || nw > windowRect.width() / 6) {
-                result.maskReason(Result.REASON_ILLEGAL_SIZE or Result.REASON_MASK_TRANSVERSE)
-                return false
-            }
-            if (nh == 0 || nh > windowRect.height() / 4) {
-                result.maskReason(Result.REASON_ILLEGAL_SIZE or Result.REASON_MASK_PORTRAIT)
-                return false
-            }
-        }
+//        if (isPortrait) {
+//            if (nw == 0 || nw >= windowRect.width() / 3) {
+//                result.maskReason(Result.REASON_ILLEGAL_SIZE or Result.REASON_MASK_TRANSVERSE)
+//                return false
+//            }
+//            if (nh == 0 || nh >= windowRect.height() / 8) {
+//                result.maskReason(Result.REASON_ILLEGAL_SIZE or Result.REASON_MASK_PORTRAIT)
+//                return false
+//            }
+//        } else {
+//            if (nw == 0 || nw > windowRect.width() / 6) {
+//                result.maskReason(Result.REASON_ILLEGAL_SIZE or Result.REASON_MASK_TRANSVERSE)
+//                return false
+//            }
+//            if (nh == 0 || nh > windowRect.height() / 4) {
+//                result.maskReason(Result.REASON_ILLEGAL_SIZE or Result.REASON_MASK_PORTRAIT)
+//                return false
+//            }
+//        }
         return true
     }
 
